@@ -162,7 +162,7 @@ void TitleScreen::Draw(Graphics* g)
 		return;
 	}
 
-	g->DrawImage(IMAGE_TITLESCREEN, 0, 0);
+	g->DrawImage(IMAGE_TITLESCREEN, 0, 0, mWidth, mHeight);
 	if (mNeedToInit)
 	{
 		return;
