@@ -543,7 +543,7 @@ void ChallengeScreen::DrawButton(Graphics* g, int theChallengeIndex)
 void ChallengeScreen::Draw(Graphics* g)
 {
 	g->SetLinearBlend(true);
-	g->DrawImage(Sexy::IMAGE_CHALLENGE_BACKGROUND, 0, 0);
+	g->DrawImage(Sexy::IMAGE_CHALLENGE_BACKGROUND, 0, 0, mWidth, mHeight);
 
 	std::string aTitleString =
 		mPageIndex == CHALLENGE_PAGE_SURVIVAL ? "[PICK_AREA]" : 
