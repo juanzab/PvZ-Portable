@@ -1132,15 +1132,17 @@ void GLInterface::UpdateViewport()
 
 	vw = width; vh = height;
 
-	// Letterbox to 4:3
-	if (width * 3 > height * 4)
+	// Letterbox/pillarbox to match the game's logical aspect ratio.
+	const int gameW = mApp->mWidth;
+	const int gameH = mApp->mHeight;
+	if (width * gameH > height * gameW)
 	{
-		vw = height * 4 / 3;
+		vw = height * gameW / gameH;
 		vx = (width - vw) / 2;
 	}
-	else if (width * 3 < height * 4)
+	else if (width * gameH < height * gameW)
 	{
-		vh = width * 3 / 4;
+		vh = width * gameH / gameW;
 		vy = (height - vh) / 2;
 	}
 

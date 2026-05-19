@@ -138,7 +138,7 @@ LawnApp::LawnApp()
 	mEffectSystem = nullptr;
 	mReanimatorCache = nullptr;
 	mCloseRequest = false;
-	mWidth = BOARD_WIDTH/IMG_DOWNSCALE;
+	mWidth = WIDE_BOARD_WIDTH/IMG_DOWNSCALE;
 	mHeight = BOARD_HEIGHT/IMG_DOWNSCALE;
 	mFullscreenBits = 32;
 	mAppCounter = 0;

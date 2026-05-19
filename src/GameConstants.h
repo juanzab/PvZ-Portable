@@ -29,11 +29,11 @@ constexpr const double PI = 3.141592653589793;
 // ============================================================
 constexpr const int BOARD_WIDTH = 800;
 constexpr const int BOARD_HEIGHT = 600;
-constexpr const int WIDE_BOARD_WIDTH = 800;
+constexpr const int WIDE_BOARD_WIDTH = 1067;
 constexpr const int BOARD_OFFSET = 220;
 constexpr const int BOARD_EDGE = -100;
 constexpr const int BOARD_IMAGE_WIDTH_OFFSET = 1180;
-constexpr const int BOARD_ICE_START = 800;
+constexpr const int BOARD_ICE_START = 1067;
 constexpr const int LAWN_XMIN = 40;
 constexpr const int LAWN_YMIN = 80;
 constexpr const int HIGH_GROUND_HEIGHT = 30;

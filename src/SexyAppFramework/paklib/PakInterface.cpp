@@ -189,7 +189,26 @@ bool PakInterface::AddPakFile(const std::string& theFileName)
 
 PFILE* PakInterface::FOpen(const char* theFileName, const char* anAccess)
 {
-	if ((strcasecmp(anAccess, "r") == 0) || (strcasecmp(anAccess, "rb") == 0) || (strcasecmp(anAccess, "rt") == 0))
+	const bool aIsRead = (strcasecmp(anAccess, "r") == 0) || (strcasecmp(anAccess, "rb") == 0) || (strcasecmp(anAccess, "rt") == 0);
+
+	// For read access: disk files override pak content (allows replacing assets without repacking).
+	// But only for relative paths — absolute paths (like the pak file itself) skip disk override.
+	const std::string& aResourceBase = Sexy::GetResourceFolder();
+	if (aIsRead && !Sexy::IsPathRooted(theFileName) && !aResourceBase.empty())
+	{
+		FILE* aFP = fcaseopenat(aResourceBase.c_str(), theFileName, anAccess);
+		if (aFP != nullptr)
+		{
+			PFILE* aPFP = new PFILE;
+			aPFP->mRecord = nullptr;
+			aPFP->mPos = 0;
+			aPFP->mFP = aFP;
+			return aPFP;
+		}
+	}
+
+	// Check pak map (includes decoded in-memory pak data).
+	if (aIsRead)
 	{
 		std::string aKey = NormalizePakPath(theFileName);
 		auto anItr = mPakRecordMap.find(aKey);
@@ -203,7 +222,7 @@ PFILE* PakInterface::FOpen(const char* theFileName, const char* anAccess)
 		}
 	}
 
-	const std::string& aResourceBase = Sexy::GetResourceFolder();
+	// Fall back to raw disk (handles absolute paths and write modes).
 	FILE* aFP = nullptr;
 	if (!aResourceBase.empty() && !Sexy::IsPathRooted(theFileName))
 	{
