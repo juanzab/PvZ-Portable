@@ -273,9 +273,9 @@ bool AwardScreen::IsPaperNote()
 	return mApp->IsAdventureMode() && (aLevel == 10 || aLevel == 20 || aLevel == 30 || aLevel == 40 || aLevel == 50);
 }
 
-void AwardScreen::DrawBottom(Graphics* g, const std::string& theTitle, const std::string& theAward, const std::string& theMessage)
+void AwardScreen::DrawBottom(Graphics* g, int theWidth, int theHeight, const std::string& theTitle, const std::string& theAward, const std::string& theMessage)
 {
-	g->DrawImage(Sexy::IMAGE_AWARDSCREEN_BACK, 0, 0);
+	g->DrawImage(Sexy::IMAGE_AWARDSCREEN_BACK, 0, 0, theWidth, theHeight);
 	TodDrawString(g, theTitle, BOARD_WIDTH / 2, 58, Sexy::FONT_DWARVENTODCRAFT24, Color(213, 159, 43), DS_ALIGN_CENTER);
 	TodDrawString(g, theAward, BOARD_WIDTH / 2, 326, Sexy::FONT_DWARVENTODCRAFT18YELLOW, Color::White, DS_ALIGN_CENTER);
 	TodDrawStringWrapped(g, theMessage, Rect(285, 360, 230, 90), Sexy::FONT_BRIANNETOD16, Color(40, 50, 90), DS_ALIGN_CENTER_VERTICAL_MIDDLE);
@@ -290,7 +290,7 @@ void AwardScreen::DrawAwardSeed(Graphics* g)
 		aMessage = "[AVAILABLE_IN_FULL_VERSION]";
 	else
 		aMessage = Plant::GetToolTip(aSeedType);
-	DrawBottom(g, "[NEW_PLANT]", aAward, aMessage);
+	DrawBottom(g, mWidth, mHeight, "[NEW_PLANT]", aAward, aMessage);
 
 	g->SetScale(2, 2, 350, 129);
 	DrawSeedPacket(g, 350, 129, aSeedType, SEED_NONE, 0, 255, true, false);
@@ -328,7 +328,7 @@ void AwardScreen::Draw(Graphics* g)
 		{
 			if (mApp->EarnedGoldTrophy())
 			{
-				DrawBottom(g, "[BEAT_GAME_MESSAGE1]", "[GOLD_SUNFLOWER_TROPHY]", "[BEAT_GAME_MESSAGE2]");
+				DrawBottom(g, mWidth, mHeight, "[BEAT_GAME_MESSAGE1]", "[GOLD_SUNFLOWER_TROPHY]", "[BEAT_GAME_MESSAGE2]");
 				TodDrawImageCelCenterScaledF(g, Sexy::IMAGE_SUNFLOWER_TROPHY, 330, 80, 1, 0.7f, 0.7f);
 			}
 			else
@@ -349,13 +349,13 @@ void AwardScreen::Draw(Graphics* g)
 				else
 					aMsgChar = mApp->GetNumTrophies(CHALLENGE_PAGE_CHALLENGE) <= 17 ? "[CHALLENGE_UNLOCKED]" : "[GET_MORE_TROPHIES]";
 
-				DrawBottom(g, "[GOT_TROPHY]", "[TROPHY]", aMsgChar);
+				DrawBottom(g, mWidth, mHeight, "[GOT_TROPHY]", "[TROPHY]", aMsgChar);
 				g->DrawImage(Sexy::IMAGE_TROPHY_HI_RES, BOARD_WIDTH / 2 - Sexy::IMAGE_TROPHY_HI_RES->mWidth / 2, 137);
 			}
 		}
 		else if (aLevel == 5)
 		{
-			DrawBottom(g, "[GOT_SHOVEL]", "[SHOVEL]", "[SHOVEL_DESCRIPTION]");
+			DrawBottom(g, mWidth, mHeight, "[GOT_SHOVEL]", "[SHOVEL]", "[SHOVEL_DESCRIPTION]");
 			g->DrawImage(Sexy::IMAGE_SHOVEL_HI_RES, BOARD_WIDTH / 2 - Sexy::IMAGE_SHOVEL_HI_RES->mWidth / 2, 137);
 		}
 		else if (aLevel == 10)
@@ -367,7 +367,7 @@ void AwardScreen::Draw(Graphics* g)
 		}
 		else if (aLevel == 15)
 		{
-			DrawBottom(g, "[FOUND_SUBURBAN_ALMANAC]", "[SUBURBAN_ALMANAC]", "[SUBURBAN_ALMANAC_DESCRIPTION]");
+			DrawBottom(g, mWidth, mHeight, "[FOUND_SUBURBAN_ALMANAC]", "[SUBURBAN_ALMANAC]", "[SUBURBAN_ALMANAC_DESCRIPTION]");
 			g->DrawImage(Sexy::IMAGE_ALMANAC, BOARD_WIDTH / 2 - Sexy::IMAGE_ALMANAC->mWidth / 2, 160);
 		}
 		else if (aLevel == 20)
@@ -379,7 +379,7 @@ void AwardScreen::Draw(Graphics* g)
 		}
 		else if (aLevel == 25)
 		{
-			DrawBottom(g, "[FOUND_KEYS]", "[KEYS]", "[KEYS_DESCRIPTION]");
+			DrawBottom(g, mWidth, mHeight, "[FOUND_KEYS]", "[KEYS]", "[KEYS_DESCRIPTION]");
 			g->DrawImage(Sexy::IMAGE_CARKEYS, BOARD_WIDTH / 2 - Sexy::IMAGE_CARKEYS->mWidth / 2, 160);
 		}
 		else if (aLevel == 30)
@@ -391,7 +391,7 @@ void AwardScreen::Draw(Graphics* g)
 		}
 		else if (aLevel == 35)
 		{
-			DrawBottom(g, "[FOUND_TACO]", "[TACO]", "[TACO_DESCRIPTION]");
+			DrawBottom(g, mWidth, mHeight, "[FOUND_TACO]", "[TACO]", "[TACO_DESCRIPTION]");
 			g->DrawImage(Sexy::IMAGE_TACO, BOARD_WIDTH / 2 - Sexy::IMAGE_TACO->mWidth / 2, 160);
 		}
 		else if (aLevel == 40)
@@ -403,7 +403,7 @@ void AwardScreen::Draw(Graphics* g)
 		}
 		else if (aLevel == 45)
 		{
-			DrawBottom(g, "[FOUND_WATERING_CAN]", "[WATERING_CAN]", "[WATERING_CAN_DESCRIPTION]");
+			DrawBottom(g, mWidth, mHeight, "[FOUND_WATERING_CAN]", "[WATERING_CAN]", "[WATERING_CAN_DESCRIPTION]");
 			g->DrawImage(Sexy::IMAGE_WATERINGCAN, BOARD_WIDTH / 2 - Sexy::IMAGE_WATERINGCAN->mWidth / 2, 160);
 		}
 		else if (aLevel == 50)
@@ -415,7 +415,7 @@ void AwardScreen::Draw(Graphics* g)
 		}
 		else if (aLevel == 1 && mApp->HasFinishedAdventure())
 		{
-			DrawBottom(g, "[WIN_MESSAGE1]", "[SILVER_SUNFLOWER_TROPHY]", "[WIN_MESSAGE2]");
+			DrawBottom(g, mWidth, mHeight, "[WIN_MESSAGE1]", "[SILVER_SUNFLOWER_TROPHY]", "[WIN_MESSAGE2]");
 			TodDrawImageCelCenterScaledF(g, Sexy::IMAGE_SUNFLOWER_TROPHY, 325, 65, 0, 0.7f, 0.7f);
 		}
 		else
