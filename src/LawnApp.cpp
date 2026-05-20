@@ -560,7 +560,7 @@ void LawnApp::ShowGameSelector()
 
 	mGameScene = GameScenes::SCENE_MENU;
 	mGameSelector = new GameSelector(this);
-	mGameSelector->Resize(WIDESCREEN_PAD, 0, BOARD_WIDTH, BOARD_HEIGHT);
+	mGameSelector->Resize(0, 0, WIDE_BOARD_WIDTH, BOARD_HEIGHT);
 	mWidgetManager->AddWidget(mGameSelector);
 	mWidgetManager->BringToBack(mGameSelector);
 	mWidgetManager->SetFocus(mGameSelector);
