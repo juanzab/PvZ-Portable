@@ -86,6 +86,7 @@ Board::Board(LawnApp* theApp)
 	mCursorObject = new CursorObject();
 	mCursorPreview = new CursorPreview();
 	mSeedBank = new SeedBank();
+	mSeedBank->mX = WIDESCREEN_PAD;
 	mCutScene = new CutScene();
 	mSpecialGraveStoneX = -1;
 	mSpecialGraveStoneY = -1;
@@ -1333,10 +1334,10 @@ void Board::InitSurvivalStage()
 
 Rect Board::GetShovelButtonRect()
 {
-	Rect aRect(GetSeedBankExtraWidth() + 456, 0, Sexy::IMAGE_SHOVELBANK->GetWidth(), Sexy::IMAGE_SHOVELBANK->GetHeight());
+	Rect aRect(GetSeedBankExtraWidth() + 456 + WIDESCREEN_PAD, 0, Sexy::IMAGE_SHOVELBANK->GetWidth(), Sexy::IMAGE_SHOVELBANK->GetHeight());
 	if (mApp->IsSlotMachineLevel() || mApp->IsSquirrelLevel())
 	{
-		aRect.mX = 600;
+		aRect.mX = 600 + WIDESCREEN_PAD;
 	}
 	return aRect;
 }
