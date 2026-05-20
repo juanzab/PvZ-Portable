@@ -300,7 +300,7 @@ GameSelector::GameSelector(LawnApp* theApp)
 	mTrophyParticleID = ParticleSystemID::PARTICLESYSTEMID_NULL;
 	mShowStartButton = false;
 
-	Reanimation* aSelectorReanim = mApp->AddReanimation(0.5f + WIDESCREEN_PAD, 0.5f, 0, ReanimationType::REANIM_SELECTOR_SCREEN);
+	Reanimation* aSelectorReanim = mApp->AddReanimation(0.5f, 0.5f, 0, ReanimationType::REANIM_SELECTOR_SCREEN);
 	aSelectorReanim->PlayReanim("anim_open", ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD, 0, 30.0f);
 	aSelectorReanim->AssignRenderGroupToPrefix("flower", RENDER_GROUP_HIDDEN);
 	aSelectorReanim->AssignRenderGroupToPrefix("leaf", RENDER_GROUP_HIDDEN);
@@ -313,7 +313,7 @@ GameSelector::GameSelector(LawnApp* theApp)
 
 	for (int i = 0; i < 6; i++)
 	{
-		Reanimation* aCloudReanim = mApp->AddReanimation(0.5f + WIDESCREEN_PAD, 0.5f, 0, ReanimationType::REANIM_SELECTOR_SCREEN);
+		Reanimation* aCloudReanim = mApp->AddReanimation(0.5f, 0.5f, 0, ReanimationType::REANIM_SELECTOR_SCREEN);
 		std::string aAnimName = Sexy::StrFormat("anim_cloud%d", (i > 1 ? i + 2 : i + 1));
 		aCloudReanim->PlayReanim(aAnimName.c_str(), ReanimLoopType::REANIM_PLAY_ONCE_AND_HOLD, 0, 0.0f);
 		mCloudReanimID[i] = mApp->ReanimationGetID(aCloudReanim);
