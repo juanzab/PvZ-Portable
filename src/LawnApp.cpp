@@ -66,6 +66,31 @@
 #include "widget/Checkbox.h"
 #include "widget/Dialog.h"
 #include "SexyAppFramework/resource.h"
+#include <fstream>
+#include <string>
+
+// ============================================================
+// Widescreen layout — runtime-configurable via pvz_layout.cfg
+// ============================================================
+int WIDESCREEN_PAD = 133;
+int LAWN_XMIN      = 173;  // = 40 + WIDESCREEN_PAD
+
+static void LoadWidescreenConfig()
+{
+    std::ifstream f("pvz_layout.cfg");
+    if (!f.is_open()) return;
+    std::string line;
+    while (std::getline(f, line))
+    {
+        if (line.empty() || line[0] == '#') continue;
+        auto eq = line.find('=');
+        if (eq == std::string::npos) continue;
+        std::string key = line.substr(0, eq);
+        int val = std::stoi(line.substr(eq + 1));
+        if (key == "widescreen_pad") WIDESCREEN_PAD = val;
+    }
+    LAWN_XMIN = 40 + WIDESCREEN_PAD;
+}
 
 bool gIsPartnerBuild = false; // GOTY @Patoke: 0x729659
 bool gSlowMo = false;
@@ -1233,6 +1258,7 @@ void BetaSubmitFunc()
 // GOTY @Patoke: 0x454C60
 void LawnApp::Init()
 {
+	LoadWidescreenConfig();
 	DoParseCmdLine();
 	if (!mTodCheatKeys)
 	{

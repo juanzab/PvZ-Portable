@@ -42,7 +42,7 @@
 #include "widget/Dialog.h"
 #include "widget/WidgetManager.h"
 
-static float gFlowerCenter[3][2] = { { 765.0f + WIDESCREEN_PAD, 483.0f }, { 663.0f + WIDESCREEN_PAD, 455.0f }, { 701.0f + WIDESCREEN_PAD, 439.0f } };
+static float gFlowerCenterBase[3][2] = { { 765.0f, 483.0f }, { 663.0f, 455.0f }, { 701.0f, 439.0f } };
 
 void GameSelectorOverlay::Draw(Graphics* g)
 { 
@@ -1201,7 +1201,7 @@ void GameSelector::MouseDown(int x, int y, int theClickCount)
 	for (int i = 0; i < 3; i++)
 	{
 		Reanimation* aFlowerReanim = mApp->ReanimationGet(mFlowerReanimID[i]);
-		if (aFlowerReanim->mAnimRate <= 0.0f && Distance2D(x, y, gFlowerCenter[i][0], gFlowerCenter[i][1]) < 20.0f)
+		if (aFlowerReanim->mAnimRate <= 0.0f && Distance2D(x, y, gFlowerCenterBase[i][0] + WIDESCREEN_PAD, gFlowerCenterBase[i][1]) < 20.0f)
 		{
 			aFlowerReanim->mAnimRate = 24.0f;
 			mApp->PlayFoley(FoleyType::FOLEY_LIMBS_POP);
