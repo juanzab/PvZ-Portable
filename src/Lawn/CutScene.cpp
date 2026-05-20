@@ -1182,7 +1182,7 @@ void CutScene::AnimateBoard()
 	// ====================================================================================================
 	if (mCutsceneTime > aTimePanLeftStart)
 	{
-		int aPanOffset = CalcPosition(aTimePanLeftStart, aTimePanLeftEnd, BOARD_IMAGE_WIDTH_OFFSET - mApp->mWidth, 0);
+		int aPanOffset = CalcPosition(aTimePanLeftStart, aTimePanLeftEnd, BOARD_IMAGE_WIDTH_OFFSET - mApp->mWidth, -aBoardOffset);
 		mBoard->Move(-aPanOffset, 0);
 	}
 
