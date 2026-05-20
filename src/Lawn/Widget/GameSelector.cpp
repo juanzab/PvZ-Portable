@@ -42,7 +42,7 @@
 #include "widget/Dialog.h"
 #include "widget/WidgetManager.h"
 
-static float gFlowerCenter[3][2] = { { 765.0f, 483.0f }, { 663.0f, 455.0f }, { 701.0f, 439.0f } };
+static float gFlowerCenter[3][2] = { { 765.0f + WIDESCREEN_PAD, 483.0f }, { 663.0f + WIDESCREEN_PAD, 455.0f }, { 701.0f + WIDESCREEN_PAD, 439.0f } };
 
 void GameSelectorOverlay::Draw(Graphics* g)
 { 
@@ -186,7 +186,7 @@ GameSelector::GameSelector(LawnApp* theApp)
 		Sexy::IMAGE_QUICKPLAY_BACK_BUTTON_HIGHLIGHT,
 		Sexy::IMAGE_QUICKPLAY_BACK_BUTTON_HIGHLIGHT
 	);
-	mQuickPlayButton->Resize(mApp->mWidth - 150, 455, Sexy::IMAGE_QUICKPLAY_BACK_BUTTON->mWidth, Sexy::IMAGE_QUICKPLAY_BACK_BUTTON->mHeight);
+	mQuickPlayButton->Resize(BOARD_WIDTH - 150, 455, Sexy::IMAGE_QUICKPLAY_BACK_BUTTON->mWidth, Sexy::IMAGE_QUICKPLAY_BACK_BUTTON->mHeight);
 
 	mZenGardenButton = MakeNewButton(
 		GameSelector::GameSelector_ZenGarden, 

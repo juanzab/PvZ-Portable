@@ -194,19 +194,19 @@ Board::Board(LawnApp* theApp)
 	if (mApp->mGameMode == GameMode::GAMEMODE_CHALLENGE_ZEN_GARDEN || mApp->mGameMode == GameMode::GAMEMODE_TREE_OF_WISDOM)
 	{
 		mMenuButton->SetLabel("[MAIN_MENU_BUTTON]");
-		mMenuButton->Resize(628, -10, 163, 46);
+		mMenuButton->Resize(628 + WIDESCREEN_PAD, -10, 163, 46);
 
 		mStoreButton = new GameButton(1);
 		mStoreButton->mButtonImage = IMAGE_ZENSHOPBUTTON;
 		mStoreButton->mOverImage = IMAGE_ZENSHOPBUTTON_HIGHLIGHT;
 		mStoreButton->mDownImage = IMAGE_ZENSHOPBUTTON_HIGHLIGHT;
 		mStoreButton->mParentWidget = this;
-		mStoreButton->Resize(678, 33, IMAGE_ZENSHOPBUTTON->mWidth, 40);
+		mStoreButton->Resize(678 + WIDESCREEN_PAD, 33, IMAGE_ZENSHOPBUTTON->mWidth, 40);
 	}
 	else
 	{
 		mMenuButton->SetLabel("[MENU_BUTTON]");
-		mMenuButton->Resize(681, -10, 117, 46);
+		mMenuButton->Resize(681 + WIDESCREEN_PAD, -10, 117, 46);
 	}
 
 	if (mApp->mGameMode == GameMode::GAMEMODE_CHALLENGE_LAST_STAND)
@@ -220,7 +220,7 @@ Board::Board(LawnApp* theApp)
 	if (mApp->mGameMode == GameMode::GAMEMODE_UPSELL)
 	{
 		mMenuButton->SetLabel("[MAIN_MENU_BUTTON]");
-		mMenuButton->Resize(628, -10, 163, 46);
+		mMenuButton->Resize(628 + WIDESCREEN_PAD, -10, 163, 46);
 
 		mStoreButton = new GameButton(1);
 		mStoreButton->mDrawStoneButton = true;
@@ -6814,7 +6814,7 @@ void Board::DrawLevel(Graphics* g)
 	// ====================================================================================================
 	// ▲ 正式开始绘制关卡名称字符串
 	// ====================================================================================================
-	int aPosX = 780;
+	int aPosX = 780 + WIDESCREEN_PAD;
 	int aPosY = 595;
 	if (HasProgressMeter())
 	{
