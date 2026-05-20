@@ -191,7 +191,7 @@ void LawnMower::Update()
     if (mMowerState == LawnMowerState::MOWER_ROLLING_IN)
     {
         mRollingInCounter++;
-        mPosX = TodAnimateCurveFloat(0, 100, mRollingInCounter, -160.0f + WIDESCREEN_PAD, -21.0f + WIDESCREEN_PAD, TodCurves::CURVE_EASE_IN_OUT);
+        mPosX = TodAnimateCurveFloat(0, 100, mRollingInCounter, (float)LAWN_XMIN - 200.0f, (float)LAWN_XMIN - 61.0f, TodCurves::CURVE_EASE_IN_OUT);
         if (mRollingInCounter == 100)
         {
             mMowerState = LawnMowerState::MOWER_READY;

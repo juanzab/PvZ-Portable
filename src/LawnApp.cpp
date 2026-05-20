@@ -73,7 +73,7 @@
 // Widescreen layout — runtime-configurable via pvz_layout.cfg
 // ============================================================
 int WIDESCREEN_PAD = 133;
-int LAWN_XMIN      = 173;  // = 40 + WIDESCREEN_PAD
+int LAWN_XMIN      = 251;  // = 118 + WIDESCREEN_PAD (grass pixel 338 - BOARD_OFFSET 220)
 
 static void LoadWidescreenConfig()
 {
@@ -89,7 +89,7 @@ static void LoadWidescreenConfig()
         int val = std::stoi(line.substr(eq + 1));
         if (key == "widescreen_pad") WIDESCREEN_PAD = val;
     }
-    LAWN_XMIN = 40 + WIDESCREEN_PAD;
+    LAWN_XMIN = 118 + WIDESCREEN_PAD;
 }
 
 bool gIsPartnerBuild = false; // GOTY @Patoke: 0x729659

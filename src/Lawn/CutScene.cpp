@@ -1285,7 +1285,7 @@ void CutScene::AnimateBoard()
 				if (aLawnMower)
 				{
 					aLawnMower->mVisible = true;
-					aLawnMower->mPosX = CalcPosition(aTimeLawnMowerStart, aTimeLawnMowerStart + TimeLawnMowerDuration, -80 + WIDESCREEN_PAD, -21 + WIDESCREEN_PAD);
+					aLawnMower->mPosX = CalcPosition(aTimeLawnMowerStart, aTimeLawnMowerStart + TimeLawnMowerDuration, LAWN_XMIN - 120, LAWN_XMIN - 61);
 				}
 			}
 		}
