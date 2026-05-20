@@ -186,7 +186,7 @@ GameSelector::GameSelector(LawnApp* theApp)
 		Sexy::IMAGE_QUICKPLAY_BACK_BUTTON_HIGHLIGHT,
 		Sexy::IMAGE_QUICKPLAY_BACK_BUTTON_HIGHLIGHT
 	);
-	mQuickPlayButton->Resize(BOARD_WIDTH - 150, 455, Sexy::IMAGE_QUICKPLAY_BACK_BUTTON->mWidth, Sexy::IMAGE_QUICKPLAY_BACK_BUTTON->mHeight);
+	mQuickPlayButton->Resize(WIDE_BOARD_WIDTH - 150, 455, Sexy::IMAGE_QUICKPLAY_BACK_BUTTON->mWidth, Sexy::IMAGE_QUICKPLAY_BACK_BUTTON->mHeight);
 
 	mZenGardenButton = MakeNewButton(
 		GameSelector::GameSelector_ZenGarden, 
@@ -261,7 +261,7 @@ GameSelector::GameSelector(LawnApp* theApp)
 	mChangeUserButton->mMouseVisible = false;
 
 	mOverlayWidget = new GameSelectorOverlay(this);
-	mOverlayWidget->Resize(0, 0, BOARD_WIDTH, BOARD_HEIGHT);
+	mOverlayWidget->Resize(0, 0, WIDE_BOARD_WIDTH, BOARD_HEIGHT);
 
 	mStoreButton = MakeNewButton(
 		GameSelector::GameSelector_Store, 
@@ -709,7 +709,7 @@ void GameSelector::DrawOverlay(Graphics* g)
 	Reanimation* aHandReanim = mApp->ReanimationTryToGet(mHandReanimID);
 	if (aHandReanim)
 	{
-		g->SetClipRect(0, 0, BOARD_WIDTH, BOARD_HEIGHT - 40);
+		g->SetClipRect(0, 0, WIDE_BOARD_WIDTH, BOARD_HEIGHT - 40);
 		aHandReanim->Draw(g);
 		g->ClearClipRect();
 	}
