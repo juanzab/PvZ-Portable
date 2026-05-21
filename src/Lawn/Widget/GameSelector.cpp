@@ -687,15 +687,15 @@ void GameSelector::DrawOverlay(Graphics* g)
 		g->SetColorizeImages(true);
 		g->SetColor(mAdventureButton->mColors[ButtonWidget::COLOR_BKG]);
 		// @Patoke: changed positions for GOTY adventure icon
-		TodDrawImageCelF(g, Sexy::IMAGE_SELECTORSCREEN_LEVELNUMBERS, aTransAreaX + 486.0f, aTransAreaY + 154.f, aStage, 0);  // 绘制大关数
+		TodDrawImageCelF(g, Sexy::IMAGE_SELECTORSCREEN_LEVELNUMBERS, aTransAreaX + 486.0f, aTransAreaY + 112.f, aStage, 0);  // 绘制大关数
 		if (aSub < 10)
 		{
-			TodDrawImageCelF(g, Sexy::IMAGE_SELECTORSCREEN_LEVELNUMBERS, aTransSubX + 509.f, aTransSubY + 154.f, aSub, 0);
+			TodDrawImageCelF(g, Sexy::IMAGE_SELECTORSCREEN_LEVELNUMBERS, aTransSubX + 509.f, aTransSubY + 112.f, aSub, 0);
 		}
 		else if (aSub == 10)
 		{
-			TodDrawImageCelF(g, Sexy::IMAGE_SELECTORSCREEN_LEVELNUMBERS, aTransSubX + 509.f, aTransSubY + 154.f, 1, 0);
-			TodDrawImageCelF(g, Sexy::IMAGE_SELECTORSCREEN_LEVELNUMBERS, aTransSubX + 518.f, aTransSubY + 155.f, 0, 0);
+			TodDrawImageCelF(g, Sexy::IMAGE_SELECTORSCREEN_LEVELNUMBERS, aTransSubX + 509.f, aTransSubY + 112.f, 1, 0);
+			TodDrawImageCelF(g, Sexy::IMAGE_SELECTORSCREEN_LEVELNUMBERS, aTransSubX + 514.f, aTransSubY + 112.f, 0, 0);
 		}
 		g->SetColorizeImages(false);
 	}
@@ -993,10 +993,10 @@ void GameSelector::Update()
 	TrackButton(mAlmanacButton, "SelectorScreen_BG_Right", 256.0f, 387.0f);
 	TrackButton(mStoreButton, "SelectorScreen_BG_Right", 334.0f, 441.0f);
 	TrackButton(mChangeUserButton, "woodsign2", 24.0f, 10.0f);
-	TrackButton(mZombatarButton, "woodsign3", 0.f, 0.f); // @Patoke: add shart here
+	TrackButton(mZombatarButton, "woodsign3", -139.5f, -41.5f);
 	TrackButton(mAchievementsButton, "SelectorScreen_BG_Left", 20.f, 480.f);
 	aSelectorReanim->SetImageOverride("woodsign2", (mChangeUserButton->mIsOver || mChangeUserButton->mIsDown) ? Sexy::IMAGE_REANIM_SELECTORSCREEN_WOODSIGN2_PRESS : nullptr);
-	aSelectorReanim->SetImageOverride("woodsign3", (mZombatarButton->mIsOver || mZombatarButton->mIsDown) ? Sexy::IMAGE_REANIM_SELECTORSCREEN_WOODSIGN3_PRESS : nullptr);
+	aSelectorReanim->SetImageOverride("woodsign3", (mZombatarButton->mIsOver || mZombatarButton->mIsDown) ? Sexy::IMAGE_REANIM_SELECTORSCREEN_WOODSIGN3_PRESS : Sexy::IMAGE_REANIM_SELECTORSCREEN_WOODSIGN3);
 }
 
 // GOTY @Patoke: 0x44EA40
